@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: alicerce-referencial-backend
+    runtime: node
+    plan: free
+    region: frankfurt
+    branch: main
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: APP_ROLE
+        value: backend
+      - key: NODE_VERSION
+        value: 22.14.0
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_PUBLISHABLE_KEY
+        sync: false
+      - key: SITE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: ALICERCE_COMPANY_ID
+        sync: false
+      - key: LEAD_RATE_LIMIT_SALT
+        generateValue: true

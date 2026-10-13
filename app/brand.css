@@ -1,0 +1,56 @@
+/* Ficheiro separado para invalidar corretamente a cache dos recursos de marca. */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-logo-full {
+  display: block !important;
+  width: 125px !important;
+  height: auto !important;
+  object-fit: contain;
+}
+
+.brand-logo-mark {
+  display: none !important;
+  height: auto !important;
+  object-fit: contain;
+}
+
+.site-footer .brand-logo-full { width: 165px !important; }
+.auth-aside .brand-logo-full { width: min(210px, 68%) !important; }
+.crm-brand .brand-logo-full { width: 135px !important; }
+.workspace > .brand {
+  display: flex;
+  margin-bottom: 34px;
+  padding: 12px 18px;
+  width: max-content;
+  background: var(--brand-navy);
+}
+.workspace > .brand .brand-logo-full { width: 145px !important; }
+
+@media (max-width: 1050px) {
+  .crm-brand .brand-logo-full { display: none !important; }
+  .crm-brand .brand-logo-mark {
+    display: block !important;
+    width: 40px !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .crm-brand {
+    flex: 0 0 36px;
+    width: 36px;
+  }
+  .crm-brand .brand { width: 36px; }
+  .crm-brand .brand-logo-mark { width: 34px !important; }
+  .site-header .brand-logo-full { width: 110px !important; }
+  .site-footer .brand-logo-full { width: 150px !important; }
+}
+
+@media (max-width: 600px) {
+  .auth-aside .brand-logo-full { width: 170px !important; }
+  .workspace > .brand .brand-logo-full { width: 130px !important; }
+}

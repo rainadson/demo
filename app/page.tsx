@@ -1,0 +1,11 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import { PublicFooter, PublicHeader, ProjectCta } from '@/components/public-shell';
+import { processSteps, services, institutionalContent } from '@/lib/content';
+export default function Home() {
+  return <main><section className="photo-hero"><Image src="/images/banner-alicerce.png" alt="Imagem ilustrativa de uma moradia portuguesa ao entardecer, com fachada clara e acabamentos em pedra" fill priority sizes="100vw" /><div className="hero-shade" /><PublicHeader overlay /><div className="hero-copy"><p className="eyebrow">CONSTRUÇÃO · REMODELAÇÃO · RENOVAÇÃO</p><h1>Construir<br />com cuidado.<br /><span>Renovar<br />com confiança.</span></h1><p>{institutionalContent.introduction}</p><div className="hero-actions"><Link className="button-light" href="/orcamento">Pedir orçamento</Link><Link className="button-ghost" href="/projetos">Ver projetos</Link></div></div></section>
+    <section className="section services-home"><div className="section-heading"><p className="eyebrow">O QUE FAZEMOS</p><h2>Soluções para<br />transformar o seu espaço.</h2></div><div className="service-list">{services.slice(0,6).map((service,index)=><Link key={service.slug} href={`/servicos/${service.slug}`}><span>{String(index+1).padStart(2,'0')}</span><strong>{service.name}</strong><ArrowRight aria-hidden="true" /></Link>)}</div><Link className="inline-link" href="/servicos">Conhecer todos os serviços <ArrowRight size={18} /></Link></section>
+    <section className="process section"><div className="section-heading"><p className="eyebrow">COMO TRABALHAMOS</p><h2>Um processo claro,<br />do primeiro contacto à entrega.</h2></div><div className="process-grid">{processSteps.map(([n,title,text])=><article key={n}><span>{n}</span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+    <section className="portfolio-teaser"><div><p className="eyebrow">PORTEFÓLIO</p><h2>Cada projeto,<br />uma história.</h2></div><div><p>Estamos a preparar o nosso portefólio. As obras serão apresentadas com imagens e informação autorizadas.</p><Link className="inline-link" href="/projetos">Ver portefólio <ArrowRight size={18} /></Link></div></section><ProjectCta /><PublicFooter /></main>;
+}
